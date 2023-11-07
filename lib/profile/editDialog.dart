@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:doctor_app/user_authentication/utils.dart';
+import 'package:doctor_app/utils.dart';
 import '../errorpage.dart';
 
 class editDialog extends StatefulWidget {

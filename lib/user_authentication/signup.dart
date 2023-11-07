@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_app/user_authentication/login.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:doctor_app/user_authentication/utils.dart';
+import 'package:doctor_app/utils.dart';
 import '../main.dart';
 
 class SignUp extends StatefulWidget {

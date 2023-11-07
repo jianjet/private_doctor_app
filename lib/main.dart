@@ -1,6 +1,8 @@
+// @dart=2.9
+
 import 'package:doctor_app/user_authentication/email_verify.dart';
 import 'package:doctor_app/user_authentication/login.dart';
-import 'package:doctor_app/user_authentication/utils.dart';
+import 'package:doctor_app/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +19,7 @@ Future<void> main() async {
 final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -34,11 +36,11 @@ class MyApp extends StatelessWidget {
 }
 
 class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+  const MainPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    body: StreamBuilder<User?>(
+    body: StreamBuilder<User>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: ((context, snapshot) {
         if (snapshot.hasData){

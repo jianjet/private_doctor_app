@@ -4,7 +4,7 @@ import 'package:doctor_app/user_authentication/admin_verify.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_app/navbar.dart';
-import 'package:doctor_app/user_authentication/utils.dart';
+import 'package:doctor_app/utils.dart';
 
 class EmailVerify extends StatefulWidget {
   const EmailVerify({Key? key}) : super(key: key);

@@ -1,24 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../user_authentication/utils.dart';
+import '../utils.dart';
 
 class AppointmentList extends StatefulWidget {
-  String patient_name;
+  String patientName;
   String service;
-  String appointment_date;
-  String appointment_time;
-  bool booking_status;
-  String document_id;
-  String doctor_name;
+  String appointmentDate;
+  String appointmentTime;
+  bool bookingStatus;
+  String documentId;
+  String doctorName;
   AppointmentList({
-    required this.patient_name,
+    required this.patientName,
     required this.service,
-    required this.appointment_date,
-    required this.appointment_time,
-    required this.booking_status,
-    required this.document_id,
-    required this.doctor_name,
+    required this.appointmentDate,
+    required this.appointmentTime,
+    required this.bookingStatus,
+    required this.documentId,
+    required this.doctorName,
     Key? key
     }) : super(key: key);
 
@@ -33,10 +33,10 @@ class AppointmentListState extends State<AppointmentList> {
 
   Future _appointmentConfirmed() async {
     try {
-      await firestore.collection('appointment_server').doc(widget.document_id).update({
+      await firestore.collection('appointment_server').doc(widget.documentId).update({
         'rated': false,
         'booking_status': true,
-        'doctor_name': widget.doctor_name, 
+        'doctor_name': widget.doctorName, 
         'doctor_uid': user!.uid
       });
     } on FirebaseException catch (e){
@@ -46,7 +46,7 @@ class AppointmentListState extends State<AppointmentList> {
 
   Future _appointmentCompleted() async {
     try {
-      await firestore.collection('appointment_server').doc(widget.document_id).update({
+      await firestore.collection('appointment_server').doc(widget.documentId).update({
         'booking_status': FieldValue.delete(),
         'complete_status': true
       });
@@ -103,22 +103,22 @@ class AppointmentListState extends State<AppointmentList> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(widget.patient_name, style: const TextStyle(fontSize: 16),),
+                            Text(widget.patientName, style: const TextStyle(fontSize: 16),),
                             const SizedBox(height: 4),
                             Text(widget.service,style: TextStyle(fontSize: 13,color: Colors.grey.shade600, fontWeight: FontWeight.normal),),
                             const SizedBox(height: 4),
                             Row(
                               children: [
-                                Text(widget.appointment_date,style: TextStyle(fontSize: 13,color: Colors.grey.shade600, fontWeight: FontWeight.normal),),
+                                Text(widget.appointmentDate,style: TextStyle(fontSize: 13,color: Colors.grey.shade600, fontWeight: FontWeight.normal),),
                                 const SizedBox(width: 10),
-                                Text(widget.appointment_time,style: TextStyle(fontSize: 13,color: Colors.grey.shade600, fontWeight: FontWeight.normal),),
+                                Text(widget.appointmentTime,style: TextStyle(fontSize: 13,color: Colors.grey.shade600, fontWeight: FontWeight.normal),),
                               ],
                             )
                           ],
                         ),
                       ),
                     ),
-                    if (widget.booking_status==true) ... [
+                    if (widget.bookingStatus==true) ... [
                       TextButton(
                         style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
                         onPressed: (){

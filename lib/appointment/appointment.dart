@@ -56,13 +56,13 @@ class AppointmentState extends State<Appointment> with TickerProviderStateMixin 
               itemBuilder: (context, index) {
                 DocumentSnapshot document = snapshot.data!.docs[index];
                 return AppointmentList(
-                  patient_name: document['patient_name'],
+                  patientName: document['patient_name'],
                   service: document['service'],
-                  appointment_date: document['appointment_date'],
-                  appointment_time: document['appointment_time'],
-                  booking_status: document['booking_status'],
-                  document_id: document.id,
-                  doctor_name: widget.doc,
+                  appointmentDate: document['appointment_date'],
+                  appointmentTime: document['appointment_time'],
+                  bookingStatus: document['booking_status'],
+                  documentId: document.id,
+                  doctorName: widget.doc,
                 );
               },
             );
@@ -103,13 +103,13 @@ class AppointmentState extends State<Appointment> with TickerProviderStateMixin 
               itemBuilder: (context, index) {
                 DocumentSnapshot document = snapshot.data!.docs[index];
                 return AppointmentList(
-                  patient_name: document['patient_name'],
+                  patientName: document['patient_name'],
                   service: document['service'],
-                  appointment_date: document['appointment_date'],
-                  appointment_time: document['appointment_time'],
-                  booking_status: document['booking_status'],
-                  document_id: document.id,
-                  doctor_name: widget.doc,
+                  appointmentDate: document['appointment_date'],
+                  appointmentTime: document['appointment_time'],
+                  bookingStatus: document['booking_status'],
+                  documentId: document.id,
+                  doctorName: widget.doc,
                 );
               },
             );

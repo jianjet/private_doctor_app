@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:doctor_app/main.dart';
 import 'package:doctor_app/user_authentication/forgot_pw.dart';
 import 'package:doctor_app/user_authentication/signup.dart';
-import 'package:doctor_app/user_authentication/utils.dart';
+import 'package:doctor_app/utils.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
