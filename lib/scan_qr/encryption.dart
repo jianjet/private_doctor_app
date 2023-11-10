@@ -12,14 +12,33 @@ class AESEncryptionForPatientId {
   getCode(String encoded) => encrypt.Encrypted.fromBase64(encoded);
 }
 
-class AESEncryptionForPatientHealthRecordsKey {
-  static final key = encrypt.Key.fromBase64('OGs5emllc3hlUU9kU09ZN0hlOE9mT1g2VE9lNDNhVk4=');
-  static final iv = encrypt.IV.fromLength(16);
-  static final encrypter = encrypt.Encrypter(encrypt.AES(key));
+class AESEncryptionForPatientHealthRecords {
+  String symmetricKey;
 
-  encryptMsg(String text) => encrypter.encrypt(text, iv: iv);
+  AESEncryptionForPatientHealthRecords(this.symmetricKey);
 
-  decryptMsg(encrypt.Encrypted text) => encrypter.decrypt(text, iv: iv);
+  static encrypt.Encrypter? encrypter;
 
-  getCode(String encoded) => encrypt.Encrypted.fromBase64(encoded);
+  Future<void> initializeEncrypter() async {
+    final key = encrypt.Key.fromBase64(symmetricKey);
+    encrypter = encrypt.Encrypter(encrypt.AES(key));
+  }
+
+  encryptMsg(String text) {
+    if (encrypter == null) {
+      throw Exception("Encrypter not initialized. Call initializeEncrypter() first.");
+    }
+    return encrypter!.encrypt(text, iv: encrypt.IV.fromLength(16));
+  }
+
+  decryptMsg(encrypt.Encrypted text) {
+    if (encrypter == null) {
+      throw Exception("Encrypter not initialized. Call initializeEncrypter() first.");
+    }
+    return encrypter!.decrypt(text, iv: encrypt.IV.fromLength(16));
+  }
+
+  getCode(String encoded) {
+    return encrypt.Encrypted.fromBase64(encoded);
+  }
 }

@@ -119,17 +119,20 @@ class AddVisitState extends State<AddVisit> {
       appBar: AppBar(
         title: const Text('Add Visit Details'),
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              children: [
-                _illness(),
-                _medication(),
-                _place(),
-                _submitButton()
-              ],
+      body: Form(
+        key: _formKey,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 15),
+              child: Column(
+                children: [
+                  _illness(),
+                  _medication(),
+                  _place(),
+                  _submitButton()
+                ],
+              ),
             ),
           ),
         ),
